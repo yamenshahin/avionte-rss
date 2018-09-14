@@ -106,7 +106,7 @@ class Avionte_Rss_Admin {
 	 *
 	 * @since    1.0.0
 	 */
-	public function creat_db_table() {
+	public function create_db_table() {
 
 		global $wpdb;
 
@@ -131,6 +131,7 @@ class Avionte_Rss_Admin {
 
 		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 		dbDelta( $sql );
+
 
 	}
 
