@@ -51,6 +51,7 @@ class Avionte_Rss_Admin {
 
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
+		$this->creat_db_table();
 
 	}
 
@@ -97,6 +98,39 @@ class Avionte_Rss_Admin {
 		 */
 
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/avionte-rss-admin.js', array( 'jquery' ), $this->version, false );
+
+	}
+
+	/**
+	 * Create database table.
+	 *
+	 * @since    1.0.0
+	 */
+	public function creat_db_table() {
+
+		global $wpdb;
+
+		$table_name = $wpdb->prefix . "avionte";
+		$charset_collate = $wpdb->get_charset_collate();
+
+		$sql = "CREATE TABLE $table_name (
+			id mediumint(9) NOT NULL AUTO_INCREMENT,
+			item_id text NOT NULL,
+			item_date datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
+			content longtext NOT NULL,
+			title text,
+			location text,
+			summary text,
+			description longtext,
+			category text,
+			salary_min INT,
+			salary_max INT,
+			keywords text,
+			PRIMARY KEY  (id)
+		) $charset_collate;";
+
+		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+		dbDelta( $sql );
 
 	}
 
