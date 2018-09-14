@@ -118,10 +118,10 @@ class Avionte_Rss_Admin {
 	 */
 	public function add_admin_page() {
 		add_menu_page( 
-			'My Top Level Menu Example', 
-			'Top Level Menu', 
+			'Avionte RSS Options', 
+			'Avionte RSS', 
 			'manage_options', 
-			'partials', 
+			'avionte_rss_options', 
 			function() {
 				ob_start();
 				include (plugin_dir_path( __FILE__ ) . 'partials/avionte-rss-admin-display.php');
