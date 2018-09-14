@@ -51,6 +51,7 @@ class Avionte_Rss_Public {
 
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
+		add_shortcode( 'avionte_rss', array( $this, 'avionte_rss_shortcode' ) );
 
 	}
 
@@ -98,6 +99,31 @@ class Avionte_Rss_Public {
 
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/avionte-rss-public.js', array( 'jquery' ), $this->version, false );
 
+	}
+
+	/**
+	* Add Shortcode avionte_rss.
+	*
+	* @since    1.0.0
+	*/
+
+	function avionte_rss_shortcode( $atts, $content = null ) {
+
+		// Attributes
+		$atts = shortcode_atts(
+			array(
+				'url'  => 'https://abb.avionte.com/job-board.rss'
+			),
+			$atts
+		);
+		ob_start();
+			include (plugin_dir_path( __FILE__ ) . 'partials/avionte-rss-public-display.php');
+			$content = ob_get_clean();
+		
+		// run shortcode parser recursively
+		$content = do_shortcode($content);
+		return $content;
+	
 	}
 
 }
