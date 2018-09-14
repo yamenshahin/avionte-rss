@@ -1,8 +1,6 @@
 <?php
 
 /**
- * The plugin bootstrap file
- *
  * This file is read by WordPress to generate the plugin information in the plugin
  * admin area. This file also includes all of the dependencies used by the plugin,
  * registers the activation and deactivation functions, and defines a function
@@ -15,12 +13,12 @@
  * @wordpress-plugin
  * Plugin Name:       Avionte RSS
  * Plugin URI:        https://github.com/yamenshahin/avionte-rss
- * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
+ * Description:       Avionte RSS is a WordPress plugin that allow Avionte RSS to be stored and displayed via WordPress. Also allow the rss feed to be searchable via simple shortcode.
  * Version:           1.0.0
  * Author:            Yamen Shahin
  * Author URI:        https://github.com/yamenshahin/
- * License:           GPL-2.0+
- * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
+ * License:           GPL-3.0+
+ * License URI:       https://www.gnu.org/licenses/gpl-3.0.en.html
  * Text Domain:       avionte-rss
  * Domain Path:       /languages
  */
@@ -33,7 +31,6 @@ if ( ! defined( 'WPINC' ) ) {
 /**
  * Currently plugin version.
  * Start at version 1.0.0 and use SemVer - https://semver.org
- * Rename this for your plugin and update it as you release new versions.
  */
 define( 'PLUGIN_NAME_VERSION', '1.0.0' );
 

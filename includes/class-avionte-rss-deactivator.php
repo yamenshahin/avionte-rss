@@ -23,9 +23,7 @@
 class Avionte_Rss_Deactivator {
 
 	/**
-	 * Short Description. (use period)
-	 *
-	 * Long Description.
+	 * Plugin deactivation.
 	 *
 	 * @since    1.0.0
 	 */
