@@ -51,8 +51,7 @@ class Avionte_Rss_Admin {
 
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
-		$this->creat_db_table();
-
+		$this->create_db_table();
 	}
 
 	/**
@@ -102,6 +101,38 @@ class Avionte_Rss_Admin {
 	}
 
 	/**
+	 * Include admin page.
+	 *
+	 * @since    1.0.0
+	 */
+
+	public function include_admin_page() {
+		ob_start();
+		include (plugin_dir_path( __FILE__ ) . 'partials/avionte-rss-admin-display.php');
+		$content = ob_get_clean();
+	}
+	/**
+	 * Add admin page
+	 *
+	 * @since    1.0.0
+	 */
+	public function add_admin_page() {
+		add_menu_page( 
+			'My Top Level Menu Example', 
+			'Top Level Menu', 
+			'manage_options', 
+			'partials', 
+			function() {
+				ob_start();
+				include (plugin_dir_path( __FILE__ ) . 'partials/avionte-rss-admin-display.php');
+				$content = ob_get_clean();
+				echo $content;
+			}, 
+			'dashicons-tickets', 
+			6 
+		);
+	}
+	/**
 	 * Create database table.
 	 *
 	 * @since    1.0.0
@@ -116,12 +147,11 @@ class Avionte_Rss_Admin {
 		$sql = "CREATE TABLE $table_name (
 			id mediumint(9) NOT NULL AUTO_INCREMENT,
 			item_id text NOT NULL,
-			item_date datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
+			link longtext NOT NULL,
 			content longtext NOT NULL,
 			title text,
 			location text,
 			summary text,
-			description longtext,
 			category text,
 			salary_min INT,
 			salary_max INT,
@@ -135,4 +165,87 @@ class Avionte_Rss_Admin {
 
 	}
 
+}
+
+function insert_rss_database() {
+	static $is_called = false;
+	if(!$is_called) {
+		$is_called = true;
+		$myXMLData = simplexml_load_file('https://abb.avionte.com/job-board.rss');
+
+		$items = $myXMLData->channel->item;
+		foreach( $items as $item ) {
+			$item_id = $item->guid;
+			$link = $item->link;
+			$title = $item->title;
+			$content = $item->description;
+
+			$DOM = new DOMDocument();
+			@$DOM->loadHTML( $item->description  );
+			$rows = $DOM->getElementsByTagName("tr");
+
+			for ($i = 0; $i < $rows->length; $i++) {
+				$cols = $rows->item($i)->getElementsbyTagName("td");
+				switch ($i) {
+					case 0:
+						//Do nothing
+						break;
+					case 1:
+						$location = $cols->item(1)->nodeValue;
+						break;
+					case 2:
+						$summary = $cols->item(1)->nodeValue;
+						break;
+					case 3:
+						//Do nothing
+						break;
+					case 4:
+						$category = $cols->item(1)->nodeValue;
+						break;
+					case 5:
+						#Do nothing
+						break;
+					case 6:
+						$salary = $cols->item(1)->nodeValue;
+						break;
+					case 7:
+						#Do nothing
+						break;
+					case 8:
+						#Do nothing
+						break;
+					case 9:
+						#Do nothing
+						break;
+					case 10:
+						$keywords = $cols->item(1)->nodeValue;
+						break;
+					default:
+						#Do nothing
+				}
+			}
+
+			global $wpdb;
+			$table_name = $wpdb->prefix . "avionte";
+
+			$wpdb->insert( 
+				$table_name, 
+				array( 
+					'item_id' => $item_id, 	
+					'link' => $link, 	
+					'content' => $content, 	
+					'title' => $title, 	
+					'location' => $location,	
+					'summary' => $summary,	
+					'category' => $category,
+					'salary_min' => 1,	
+					'salary_max' => 2, 	
+					'keywords' => $keywords
+				) 
+			);
+		}
+	}
+	
+
+	
 }

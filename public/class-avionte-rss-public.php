@@ -117,8 +117,8 @@ class Avionte_Rss_Public {
 			$atts
 		);
 		ob_start();
-			include (plugin_dir_path( __FILE__ ) . 'partials/avionte-rss-public-display.php');
-			$content = ob_get_clean();
+		include (plugin_dir_path( __FILE__ ) . 'partials/avionte-rss-public-display.php');
+		$content = ob_get_clean();
 		
 		// run shortcode parser recursively
 		$content = do_shortcode($content);
