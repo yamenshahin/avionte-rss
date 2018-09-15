@@ -14,4 +14,20 @@
 ?>
 
 <!-- This file should primarily consist of HTML with a little bit of PHP. -->
-<h1>Hello World</h1>
+<div class="wrap">
+    <form method="post" action="options.php">
+        <?php settings_fields( 'avionte-settings-group' ); ?>
+        <?php do_settings_sections( 'avionte-settings-group' ); ?>
+        <table class="form-table">
+            <tr valign="top">
+            <th scope="row">RSS URL</th>
+                <td><input type="text" name="avionte_url_option" value="<?php echo esc_attr( get_option('avionte_url_option') ); ?>" /></td>
+            </tr>
+            <tr valign="top">
+            <th scope="row"></th>
+                <td><?php submit_button(); ?></td>
+            </tr>
+
+        </table>
+    </form>
+</div>
