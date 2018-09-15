@@ -2,3 +2,15 @@
  * All of the CSS for your public-facing functionality should be
  * included in this file.
  */
+ .avionte-clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+ .avionte-wrap, .avionte-search-wrap {
+     width: 100%;
+ }
+ .col-50{
+    width: 50%;
+    float: left;
+ }
