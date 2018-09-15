@@ -127,3 +127,10 @@ class Avionte_Rss_Public {
 	}
 
 }
+
+/**
+ * Include Fetch result
+ *
+ * @since    1.0.0
+ */
+include (plugin_dir_path( __FILE__ ) . 'fetch-result.php');
