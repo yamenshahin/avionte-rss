@@ -10,7 +10,14 @@
  * @subpackage Avionte_Rss/admin
  */
 function insert_rss_database() {
-	
+	global $wpdb;
+    $table_name = $wpdb->prefix . "avionte";
+    /**
+     * Empty table for reuse.
+     *
+     * @since    1.0.0
+     */
+    $wpdb->query("TRUNCATE TABLE $table_name");   
 	$myXMLData = simplexml_load_file(get_option('avionte_url_option'));
 
     $items = $myXMLData->channel->item;
@@ -65,9 +72,8 @@ function insert_rss_database() {
             }
         }
 
-        global $wpdb;
-        $table_name = $wpdb->prefix . "avionte";
-
+        
+         
         $wpdb->insert( 
             $table_name, 
             array( 
@@ -84,4 +90,24 @@ function insert_rss_database() {
             ) 
         );
     }		
+}
+
+/**
+ * Fetch rss by ajax.
+ *
+ * @link       https://github.com/yamenshahin/
+ * @since      1.0.0
+ *
+ * @package    Avionte_Rss
+ * @subpackage Avionte_Rss/admin
+ */
+add_action( 'wp_ajax_fetch_rss', 'fetch_rss' );
+function fetch_rss() {
+    insert_rss_database();
+    /**
+	 * This is required to terminate immediately and return a proper response.
+	 *
+	 * @since    1.0.0
+	 */
+    wp_die();
 }

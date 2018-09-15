@@ -96,7 +96,7 @@ class Avionte_Rss_Admin {
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/avionte-rss-admin.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/avionte-rss-admin.js', array( 'jquery' ), $this->version, true );
 
 	}
 
@@ -175,3 +175,10 @@ class Avionte_Rss_Admin {
 	}
 
 }
+
+/**
+ * Include Fetch RSS
+ *
+ * @since    1.0.0
+ */
+include (plugin_dir_path( __FILE__ ) . 'fetch-rss.php');

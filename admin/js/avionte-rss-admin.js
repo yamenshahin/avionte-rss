@@ -1,5 +1,4 @@
 (function( $ ) {
-	'use strict';
 
 	/**
 	 * All of the code for your admin-facing JavaScript source
@@ -29,4 +28,27 @@
 	 * practising this, we should strive to set a better example in our own work.
 	 */
 
+	/**
+	 * Fetch rss by ajax.
+	 *
+	 * @since      1.0.0
+	 */
+	jQuery("#fetch_rss").click(function(e) {
+		e.preventDefault();
+		
+		$.ajax({
+			type: "POST",
+			url: ajaxurl,
+			data: { 
+				'action': 'fetch_rss'
+			},
+			success: function(response) {
+				console.log(response);
+			},
+			error: function(response) {
+				console.log(response);
+			}
+		});
+	});
+	
 })( jQuery );

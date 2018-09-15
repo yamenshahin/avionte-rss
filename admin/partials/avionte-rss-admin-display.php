@@ -26,6 +26,9 @@
             <tr valign="top">
             <th scope="row"></th>
                 <td><?php submit_button(); ?></td>
+                <td>
+                    <a  id="fetch_rss" href="#" class="button button-primary">Fetch-rss</a>
+                </td>
             </tr>
 
         </table>
