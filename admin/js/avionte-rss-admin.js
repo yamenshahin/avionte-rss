@@ -35,18 +35,18 @@
 	 */
 	jQuery("#fetch_rss").click(function(e) {
 		e.preventDefault();
-		
-		$.ajax({
+		console.log('hello');
+		jQuery.ajax({
 			type: "POST",
 			url: ajaxurl,
 			data: { 
 				'action': 'fetch_rss'
 			},
 			success: function(response) {
-				console.log(response);
+				console.log('Done');
 			},
 			error: function(response) {
-				console.log(response);
+				console.log('Not Done');
 			}
 		});
 	});
