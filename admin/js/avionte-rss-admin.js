@@ -35,7 +35,6 @@
 	 */
 	jQuery("#fetch_rss").click(function(e) {
 		e.preventDefault();
-		console.log('hello');
 		jQuery.ajax({
 			type: "POST",
 			url: ajaxurl,
