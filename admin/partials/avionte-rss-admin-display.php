@@ -15,6 +15,7 @@
 
 <!-- This file should primarily consist of HTML with a little bit of PHP. -->
 <div class="wrap">
+    <h1>Avionte Rss Options</h1>
     <form method="post" action="options.php">
         <?php settings_fields( 'avionte-settings-group' ); ?>
         <?php do_settings_sections( 'avionte-settings-group' ); ?>
@@ -26,11 +27,11 @@
             <tr valign="top">
             <th scope="row"></th>
                 <td><?php submit_button(); ?></td>
-                <td>
-                    <a  id="fetch_rss" href="#" class="button button-primary">Fetch-rss</a>
-                </td>
             </tr>
-
+            <tr valign="top">
+            <th scope="row">Fetch rss (* save setting first)</th>
+                <td><a  id="fetch_rss" href="#" class="button button-primary">Fetch-rss</a></td>
+            </tr>
         </table>
     </form>
 </div>
