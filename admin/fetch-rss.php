@@ -53,7 +53,9 @@ function insert_rss_database() {
                     #Do nothing
                     break;
                 case 6:
-                    $salary = $cols->item(1)->nodeValue;
+                    $salary = explode('-', $cols->item(1)->nodeValue);
+                    $salary_min = $salary[0];
+                    $salary_max = $salary[1];
                     break;
                 case 7:
                     #Do nothing
@@ -84,8 +86,8 @@ function insert_rss_database() {
                 'location' => $location,	
                 'summary' => $summary,	
                 'category' => $category,
-                'salary_min' => 1,	
-                'salary_max' => 2, 	
+                'salary_min' => $salary_min,	
+                'salary_max' => $salary_max, 	
                 'keywords' => $keywords
             ) 
         );
