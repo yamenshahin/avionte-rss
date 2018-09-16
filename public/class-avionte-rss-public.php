@@ -133,7 +133,23 @@ class Avionte_Rss_Public {
 	
 	}
 
-
+	/**
+	* Fill public form values from the database.
+	*
+	* @since    1.0.0
+	*/
+	function get_from_value($col) {
+		global $wpdb;
+		$table_name = $wpdb->prefix . "avionte";
+		
+		/**
+		 * Select one col from the database and removes duplicate values from the array.
+		 *
+		 * @since    1.0.0
+		 */
+		$form_values =  array_unique($wpdb->get_col( "SELECT $col FROM $table_name" ));
+		return $form_values;
+	}
 }
 
 /**
