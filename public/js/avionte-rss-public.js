@@ -36,16 +36,17 @@
 		e.preventDefault();
 		jQuery.ajax({
 			type: "POST",
-			url: ajaxurl,
+			url: frontend_ajax_url.ajaxurl,
 			data: { 
 				'action': 'fetch_result'
 			},
 			success: function(response) {
-				console.log('Done');
+				console.log('Done ' + JSON.stringify(response));
 			},
 			error: function(response) {
-				console.log('Not Done');
+				console.log('Not Done' + JSON.stringify(response));
 			}
 		});
 	});
+	
 })( jQuery );

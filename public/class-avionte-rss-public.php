@@ -98,6 +98,13 @@ class Avionte_Rss_Public {
 		 */
 
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/avionte-rss-public.js', array( 'jquery' ), $this->version, true );
+		
+		/**
+		* Add ajax_url to front-end.
+		*
+		* @since    1.0.0
+		*/
+		wp_localize_script( $this->plugin_name, 'frontend_ajax_url', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
 
 	}
 
@@ -125,6 +132,7 @@ class Avionte_Rss_Public {
 		return $content;
 	
 	}
+
 
 }
 

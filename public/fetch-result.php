@@ -11,7 +11,9 @@
  */
 function result_content() {
 	global $wpdb;
-    $table_name = $wpdb->prefix . "avionte";
+	$table_name = $wpdb->prefix . "avionte";
+	
+	return 'Hello World';
     
 }
 
@@ -24,10 +26,10 @@ function result_content() {
  * @package    Avionte_Rss
  * @subpackage Avionte_Rss/admin
  */
-add_action( 'wp_ajax_fetch_rss', 'fetch_result' );
-add_action( 'wp_ajax_nopriv_fetch_rss', 'fetch_result' );
+add_action( 'wp_ajax_fetch_result', 'fetch_result' );
+add_action( 'wp_ajax_nopriv_fetch_result', 'fetch_result' );
 function fetch_result() {
-    result_content();
+    echo  result_content();
     /**
 	 * This is required to terminate immediately and return a proper response.
 	 *
