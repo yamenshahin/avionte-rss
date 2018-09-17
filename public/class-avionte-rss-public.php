@@ -159,7 +159,7 @@ class Avionte_Rss_Public {
 	public function get_single_page($item_id) {
 		global $wpdb;
 		$table_name = $wpdb->prefix . "avionte";
-		$results = $wpdb->get_results( "SELECT * FROM `wp_avionte` WHERE `item_id` = '$item_id' ", OBJECT );
+		$results = $wpdb->get_results( "SELECT * FROM $table_name WHERE `item_id` = '$item_id' ", OBJECT );
 		return $results;
 	}
 

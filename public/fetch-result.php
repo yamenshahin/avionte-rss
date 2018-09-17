@@ -19,7 +19,7 @@ function result_content($keywords, $salary, $category, $location) {
 		$salary_query = '';
 	}
 
-	$results = $wpdb->get_results( "SELECT * FROM `wp_avionte`
+	$results = $wpdb->get_results( "SELECT * FROM $table_name
 	 WHERE `location` LIKE '%$location%' 
 	 AND `category` LIKE '%$category%' 
 	 $salary_query	
