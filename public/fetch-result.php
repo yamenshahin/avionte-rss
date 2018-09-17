@@ -12,8 +12,33 @@
 function result_content($keywords, $salary, $category, $location) {
 	global $wpdb;
 	$table_name = $wpdb->prefix . "avionte";
-	
-	return $keywords;
+	$results = $wpdb->get_results( "SELECT * FROM `wp_avionte`
+	 WHERE `location` LIKE '%$location%' 
+	 AND `category` LIKE '%$category%' 
+	 AND `salary_min` <= $salary AND `salary_max` >= $salary 
+	 AND `keywords` LIKE '%$keywords%' ", OBJECT );
+	$content = '';
+	if($results) {
+		foreach($results as $result) {
+			$content .= 
+
+			'<li>
+                <a href="?item_id='.$result->item_id.'">
+                    <div class="position">
+                        <p>'.$result->title.'</p>
+                    </div>
+                    <div class="location">
+                        <p>'.$result->location.'</p>
+                    </div>
+                </a>
+                <div class="application_link">
+                    <a href="'.$result->link.'" target="_blank" class="avionte-button">Apply Now</a>
+                </div>
+            </li>';
+
+		}
+	}
+	return $content;
     
 }
 

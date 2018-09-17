@@ -45,10 +45,11 @@
 				'location': jQuery('#location').val()
 			},
 			success: function(response) {
-				jQuery('.avionte-result').append(response);
+				jQuery('.job-listing').html(response);
+				console.log(JSON.stringify(response));
 			},
 			error: function(response) {
-				jQuery('.avionte-result').append('Something wrong happened!');
+				jQuery('.job-listing').html('Something wrong happened!');
 			}
 		});
 	});
@@ -69,10 +70,10 @@
 				'location': jQuery('#location').val()
 			},
 			success: function(response) {
-				jQuery('.avionte-result').append(response);
+				jQuery('.job-listing').html(response);
 			},
 			error: function(response) {
-				jQuery('.avionte-result').append('Something wrong happened!');
+				jQuery('.job-listing').html('Something wrong happened!');
 			}
 		});
 	});
@@ -95,10 +96,10 @@
 				'location': jQuery('#location').val()
 			},
 			success: function(response) {
-				jQuery('.avionte-result').append(response);
+				jQuery('.job-listing').html(response);
 			},
 			error: function(response) {
-				jQuery('.avionte-result').append('Something wrong happened!');
+				jQuery('.job-listing').html('Something wrong happened!');
 			}
 		});
 	});
