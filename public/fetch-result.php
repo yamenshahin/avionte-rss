@@ -9,11 +9,11 @@
  * @package    Avionte_Rss
  * @subpackage Avionte_Rss/admin
  */
-function result_content() {
+function result_content($keywords, $salary, $category, $location) {
 	global $wpdb;
 	$table_name = $wpdb->prefix . "avionte";
 	
-	return 'Hello World';
+	return $keywords;
     
 }
 
@@ -29,7 +29,7 @@ function result_content() {
 add_action( 'wp_ajax_fetch_result', 'fetch_result' );
 add_action( 'wp_ajax_nopriv_fetch_result', 'fetch_result' );
 function fetch_result() {
-    echo  result_content();
+    echo  result_content($_POST['keywords'], $_POST['salary'], $_POST['category'], $_POST['location']);
     /**
 	 * This is required to terminate immediately and return a proper response.
 	 *

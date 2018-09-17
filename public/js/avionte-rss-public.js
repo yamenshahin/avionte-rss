@@ -27,6 +27,56 @@
 	 * Although scripts in the WordPress core, Plugins and Themes may be
 	 * practising this, we should strive to set a better example in our own work.
 	 */
+
+	 /**
+	 * Fetch result by ajax on change.
+	 *
+	 * @since      1.0.0
+	 */
+	jQuery("#location, #category").change(function() {
+		jQuery.ajax({
+			type: "POST",
+			url: frontend_ajax_url.ajaxurl,
+			data: { 
+				'action': 'fetch_result',
+				'keywords': jQuery('#keywords').val(),
+				'salary': jQuery('#salary').val(),
+				'category': jQuery('#category').val(),
+				'location': jQuery('#location').val()
+			},
+			success: function(response) {
+				jQuery('.avionte-result').append(response);
+			},
+			error: function(response) {
+				jQuery('.avionte-result').append('Something wrong happened!');
+			}
+		});
+	});
+	/**
+	 * Fetch result by ajax on keyup.
+	 *
+	 * @since      1.0.0
+	 */
+	jQuery("#keywords, #salary").keyup(function() {
+		jQuery.ajax({
+			type: "POST",
+			url: frontend_ajax_url.ajaxurl,
+			data: { 
+				'action': 'fetch_result',
+				'keywords': jQuery('#keywords').val(),
+				'salary': jQuery('#salary').val(),
+				'category': jQuery('#category').val(),
+				'location': jQuery('#location').val()
+			},
+			success: function(response) {
+				jQuery('.avionte-result').append(response);
+			},
+			error: function(response) {
+				jQuery('.avionte-result').append('Something wrong happened!');
+			}
+		});
+	});
+
 	/**
 	 * Fetch result by ajax.
 	 *
@@ -38,13 +88,17 @@
 			type: "POST",
 			url: frontend_ajax_url.ajaxurl,
 			data: { 
-				'action': 'fetch_result'
+				'action': 'fetch_result',
+				'keywords': jQuery('#keywords').val(),
+				'salary': jQuery('#salary').val(),
+				'category': jQuery('#category').val(),
+				'location': jQuery('#location').val()
 			},
 			success: function(response) {
-				console.log('Done ' + JSON.stringify(response));
+				jQuery('.avionte-result').append(response);
 			},
 			error: function(response) {
-				console.log('Not Done' + JSON.stringify(response));
+				jQuery('.avionte-result').append('Something wrong happened!');
 			}
 		});
 	});

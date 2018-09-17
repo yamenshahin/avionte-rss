@@ -45,8 +45,12 @@ $select_location_values = $publicContent->get_from_value('location');
         <div class="col-50">
             <input type="number" class="avionte-form-control" id="salary" placeholder="Salary">
         </div>
+        <div class="col-50">
+            <a id="fetch_result" href="#">Search</a>
+        </div>
     </div>
+    <div class="avionte-clearfix"></div>
     <div class="avionte-result">
-        <a id="fetch_result" href="#">fetch_result</a>
+        
     </div>
 </div>
