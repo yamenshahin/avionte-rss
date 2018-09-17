@@ -52,7 +52,7 @@ class Avionte_Rss_Public {
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
 		add_shortcode( 'avionte_rss', array( $this, 'avionte_rss_shortcode' ) );
-
+		add_filter( 'page_template', array( $this, 'avionte_page_template' ) );
 	}
 
 	/**
@@ -114,7 +114,7 @@ class Avionte_Rss_Public {
 	* @since    1.0.0
 	*/
 
-	function avionte_rss_shortcode( $atts, $content = null ) {
+	public function avionte_rss_shortcode( $atts, $content = null ) {
 
 		// Attributes
 		$atts = shortcode_atts(
@@ -138,7 +138,7 @@ class Avionte_Rss_Public {
 	*
 	* @since    1.0.0
 	*/
-	function get_from_value($col) {
+	public function get_from_value($col) {
 		global $wpdb;
 		$table_name = $wpdb->prefix . "avionte";
 		
@@ -149,6 +149,31 @@ class Avionte_Rss_Public {
 		 */
 		$form_values =  array_unique($wpdb->get_col( "SELECT $col FROM $table_name" ));
 		return $form_values;
+	}
+
+	/**
+	* Return the single page based on item_id.
+	*
+	* @since    1.0.0
+	*/
+	public function get_single_page($item_id) {
+		global $wpdb;
+		$table_name = $wpdb->prefix . "avionte";
+		$results = $wpdb->get_results( "SELECT * FROM `wp_avionte` WHERE `item_id` = '$item_id' ", OBJECT );
+		return $results;
+	}
+
+	/**
+	* Add page template avionte for displaying single page.
+	*
+	* @since    1.0.0
+	*/
+	public function avionte_page_template( $page_template )
+	{
+		if ( is_page( 'job-list' ) ) {
+			$page_template = plugin_dir_path( __FILE__ ) . 'partials/page-avionte-template.php';
+		}
+		return $page_template;
 	}
 }
 

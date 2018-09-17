@@ -54,4 +54,17 @@ ul.avionte-job-listing li{
     display: block;
     text-align: center;
     padding: .2em .5em;
+    text-decoration: none;
+}
+.avionte-job-list-wrap {
+    width: 100%;
+}
+.avionte-job-list-wrap .title-wrap, .avionte-job-list-wrap .button-wrap {
+    float: left;
+}
+.avionte-job-list-wrap .title-wrap {
+    width: 80%;
+}
+.avionte-job-list-wrap .button-wrap {
+    width: 20%;
 }

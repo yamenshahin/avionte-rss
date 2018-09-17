@@ -30,7 +30,7 @@ function result_content($keywords, $salary, $category, $location) {
 			$content .= 
 
 			'<li>
-                <a class="position-info" href="?item_id='.$result->item_id.'">
+                <a class="position-info" href="/job-list/?item_id='.$result->item_id.'">
                     <div class="position">
                         <p>'.$result->title.'</p>
                     </div>
