@@ -12,10 +12,17 @@
 function result_content($keywords, $salary, $category, $location) {
 	global $wpdb;
 	$table_name = $wpdb->prefix . "avionte";
+
+	if($salary) {
+		$salary_query = "AND `salary_min` <= $salary AND `salary_max` >= $salary";
+	} else {
+		$salary_query = '';
+	}
+
 	$results = $wpdb->get_results( "SELECT * FROM `wp_avionte`
 	 WHERE `location` LIKE '%$location%' 
 	 AND `category` LIKE '%$category%' 
-	 AND `salary_min` <= $salary AND `salary_max` >= $salary 
+	 $salary_query	
 	 AND `keywords` LIKE '%$keywords%' ", OBJECT );
 	$content = '';
 	if($results) {
@@ -23,7 +30,7 @@ function result_content($keywords, $salary, $category, $location) {
 			$content .= 
 
 			'<li>
-                <a href="?item_id='.$result->item_id.'">
+                <a class="position-info" href="?item_id='.$result->item_id.'">
                     <div class="position">
                         <p>'.$result->title.'</p>
                     </div>

@@ -51,9 +51,9 @@ $select_location_values = $publicContent->get_from_value('location');
     </div>
     <div class="avionte-clearfix"></div>
     <div class="avionte-result">
-        <ul class="job-listing">
+        <ul class="avionte-job-listing">
             <li>
-                <a href="#">
+                <a class="position-info" href="#">
                     <div class="position">
                         <p>Label Room Associate | 2nd Shift | $14.50 | Bloomington</p>
                     </div>
