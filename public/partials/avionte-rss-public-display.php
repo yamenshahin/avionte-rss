@@ -52,7 +52,7 @@ $select_location_values = $publicContent->get_from_value('location');
     <div class="avionte-clearfix"></div>
     <div class="avionte-result">
         <ul class="avionte-job-listing">
-            
+            <?php echo result_content(); ?>
         </ul>
     </div>
 </div>

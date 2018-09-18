@@ -9,7 +9,7 @@
  * @package    Avionte_Rss
  * @subpackage Avionte_Rss/admin
  */
-function result_content($keywords, $salary, $category, $location) {
+function result_content($keywords = NULL, $salary = NULL, $category = NULL, $location = NULL) {
 	global $wpdb;
 	$table_name = $wpdb->prefix . "avionte";
 
