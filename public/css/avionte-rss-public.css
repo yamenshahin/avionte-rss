@@ -13,6 +13,8 @@
 .col-50{
     width: 50%;
     float: left;
+    padding-right: 10px;
+	margin-bottom: 10px;
 }
 .avionte-form-control {
     width: 100%;
@@ -33,23 +35,26 @@ ul.avionte-job-listing li{
 .avionte-result .position-info, .avionte-result .avionte-button{
     text-decoration: none;
 }
-.avionte-result .position-info, .avionte-result .application_link, .avionte-result .position, .avionte-result .location{
-    display: block;
-    float: left;
-}
-.avionte-result .position-info {
+@media screen and (min-width: 491px) {
+   .avionte-result .position-info, .avionte-result .application_link, .avionte-result .position, .avionte-result .location{
+        display: block;
+        float: left;
+    }
+    .avionte-result .position-info {
     width: 80%;
+    }
+    .avionte-result .application_link {
+        width: 20%;
+        overflow: hidden;
+    }
+    .avionte-result .position {
+        width: 80%;
+    }
+    .avionte-result .location {
+        width: 20%;
+    }
 }
-.avionte-result .application_link {
-    width: 20%;
-    overflow: hidden;
-}
-.avionte-result .position {
-    width: 80%;
-}
-.avionte-result .location {
-    width: 20%;
-}
+
 .avionte-button {
     display: block;
     text-align: center;

@@ -75,6 +75,7 @@ class Avionte_Rss_Public {
 		 */
 
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/avionte-rss-public.css', array(), $this->version, 'all' );
+		wp_enqueue_style( 'avionte_rss_theme', plugin_dir_url( __FILE__ ) . 'css/avionte-rss-public-theme.css', array(), $this->version, 'all' );
 
 	}
 

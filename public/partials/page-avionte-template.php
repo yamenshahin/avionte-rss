@@ -19,15 +19,21 @@ get_header();
  */
 $publicSingleContent = new Avionte_Rss_Public('avionte_rss', '1.0.0');
 $results = $publicSingleContent->get_single_page($_GET['item_id']);
+$applay_URL = parse_url($results[0]->link, PHP_URL_SCHEME).':/'.parse_url($results[0]->link, PHP_URL_HOST).'/talent/apply?postingId='.$results[0]->item_id;
 ?>
 <div class="avionte-job-list-wrap">
     <div class="title-wrap">
-        <h2><?php echo $results[0]->title; ?></h2>
+        <h2>&nbsp;</h2>
     </div>
     <div class="button-wrap">
-        <a href="<?php echo $results[0]->link; ?>" target="_blank" class="avionte-button">Apply Now</a>
+        <button class="avionte-button" type="button" onclick="window.open('<?php echo $applay_URL; ?>', '_blank')">Apply Now</button> 
     </div>
 
     <?php echo $results[0]->content; ?>
 </div>
+<script>
+	(function( $ ) {
+		jQuery('.page-id-7870 .titlebar-heading').html('<?php echo $results[0]->title; ?>');
+	})( jQuery );
+</script>
 <?php get_footer();
