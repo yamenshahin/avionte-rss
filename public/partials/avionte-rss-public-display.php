@@ -25,7 +25,7 @@ $select_location_values = $publicContent->get_from_value('location');
         </div>
         <div class="col-50">
             <select class="avionte-form-control" id="location" placeholder="Location">
-                <option value="">All</option>
+                <option value="">All Cities</option>
                 <?php
                 foreach($select_location_values as $value) {
                     echo "<option value='$value'>$value</option>";
@@ -36,7 +36,7 @@ $select_location_values = $publicContent->get_from_value('location');
         <div class="avionte-clearfix"></div>
         <div class="col-50">
             <select class="avionte-form-control" id="category" placeholder="Category">
-                <option value="">All</option>
+                <option value="">All Job Categories</option>
                 <?php
                 foreach($select_category_values as $value) {
                     echo "<option value='$value'>$value</option>";
