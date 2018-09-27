@@ -27,7 +27,7 @@ function result_content($keywords = NULL, $salary = NULL, $category = NULL, $loc
 	$content = '';
 	if($results) {
 		foreach($results as $result) {
-			$applay_URL = parse_url($result->link, PHP_URL_SCHEME).':/'.parse_url($result->link, PHP_URL_HOST).'/talent/apply?postingId='.$results[0]->item_id;
+			$applay_URL = parse_url($result->link, PHP_URL_SCHEME).'://'.parse_url($result->link, PHP_URL_HOST).'/talent/apply?postingId='.$results[0]->item_id;
 			$button_html = '<button class="avionte-button" type="button" onclick="window.open(\''.$applay_URL.'\', \'_blank\')">Apply Now</button>';
 			$content .= 
 
